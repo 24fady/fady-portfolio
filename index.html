@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fady Sameh Hakim — Junior Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04070A;
+  --bg-soft:#0A1117;
+  --panel:#0C141B;
+  --border:rgba(255,255,255,0.08);
+  --border-strong:rgba(255,255,255,0.15);
+  --teal:#2FD9C4;
+  --teal-dim:#1FA895;
+  --white:#F5F8FA;
+  --muted:#8CA0B3;
+  --muted-soft:#61707F;
+  --text-body:#C6D4E0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{font-family:'Space Grotesk',sans-serif;}
+.mono{font-family:'JetBrains Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;}
+::selection{background:var(--teal);color:var(--bg);}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(4,7,10,0.8);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1180px;margin:0 auto;padding:14px 8vw;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:var(--white);}
+.brand b{color:var(--teal);}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{
+  color:var(--muted);font-size:0.85rem;transition:color .2s;
+  position:relative;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{
+  border:1px solid var(--border-strong);color:var(--white);
+  padding:8px 16px;border-radius:8px;font-size:0.85rem;font-weight:500;
+  transition:border-color .2s,color .2s;
+}
+.nav-cta:hover{border-color:var(--teal);color:var(--teal);}
+@media(max-width:760px){
+  .nav-links{display:none;}
+}
+
+/* ============ HERO ============ */
+#hero{
+  min-height:100vh;
+  padding:140px 8vw 60px;
+  position:relative;
+  display:flex;flex-direction:column;justify-content:center;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(47,217,196,0.06), transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(47,217,196,0.05), transparent 45%),
+    var(--bg);
+}
+#hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse at center, black 15%, transparent 72%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:2;}
+.hero-top{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--muted);
+  margin-bottom:60px;
+}
+.hero-top a:hover{color:var(--teal);}
+.hero-role{
+  font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--teal);
+  display:flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.hero-role::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+#hero h1{
+  font-size:clamp(2.6rem,7vw,5.2rem);
+  font-weight:700;line-height:1.02;letter-spacing:-0.02em;color:var(--white);
+}
+#hero h1 em{font-style:normal;color:var(--teal);}
+.hero-usp{
+  max-width:600px;color:var(--text-body);font-size:1.18rem;line-height:1.7;
+  margin:26px 0 38px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+.btn{
+  padding:13px 22px;border-radius:9px;font-size:0.95rem;font-weight:500;
+  transition:all .25s;
+}
+.btn-solid{background:var(--teal);color:var(--bg);}
+.btn-solid:hover{background:#5be6d5;transform:translateY(-2px);}
+.btn-outline{border:1px solid var(--border-strong);color:var(--white);}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
+.hero-focus{
+  display:flex;gap:50px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  padding-top:30px;border-top:1px solid var(--border);
+}
+.focus-block .fb-label{
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted-soft);
+  letter-spacing:1.5px;margin-bottom:12px;
+}
+.focus-block .fb-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.focus-block .fb-tags span{
+  font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--muted);
+  border:1px solid var(--border);padding:5px 11px;border-radius:7px;
+}
+.social-strip{display:flex;gap:20px;flex-wrap:wrap;}
+.social-strip a{
+  font-size:0.82rem;color:var(--muted);border-bottom:1px solid var(--border);
+  padding-bottom:5px;transition:color .2s,border-color .2s;
+}
+.social-strip a:hover{color:var(--teal);border-color:var(--teal);}
+
+/* Hero pipeline panel */
+.hero-panel{
+  margin-top:52px;background:var(--panel);border:1px solid var(--border);border-radius:16px;
+  padding:26px 28px;position:relative;overflow:hidden;
+}
+.hero-panel .hp-label{
+  font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--teal-dim);
+  letter-spacing:2px;margin-bottom:22px;
+}
+.hp-ahead{
+  display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;
+}
+.hp-step{
+  min-width:118px;text-align:center;padding:20px 12px;
+  border:1px solid var(--border);border-radius:10px;background:rgba(47,217,196,0.05);
+}
+.hp-step .n{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--teal-dim);margin-bottom:6px;}
+.hp-step .l{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.92rem;color:var(--white);}
+.hp-step.final{border-color:rgba(47,217,196,0.55);background:rgba(47,217,196,0.1);}
+.hp-step.final .l{color:var(--teal);}
+.hp-arrow{color:var(--teal);font-size:1.35rem;padding:0 10px;font-family:'JetBrains Mono',monospace;}
+
+/* Availability chip */
+.avail-chip{
+  display:inline-flex;align-items:center;gap:10px;margin-top:14px;
+  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal);
+  border:1px solid rgba(47,217,196,0.3);padding:9px 16px;border-radius:8px;
+}
+.avail-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+
+/* Scroll cue */
+.scroll-cue{
+  margin-top:52px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+  color:var(--muted-soft);letter-spacing:3px;display:flex;align-items:center;gap:10px;
+}
+.scroll-cue a:hover{color:var(--teal);}
+
+/* Marquee */
+.marquee{
+  margin-top:70px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:18px 0;overflow:hidden;white-space:nowrap;position:relative;
+}
+.marquee-track{
+  display:inline-block;white-space:nowrap;animation:marquee 26s linear infinite;
+}
+.marquee-track span{
+  font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--muted);
+  margin-right:34px;letter-spacing:0.5px;
+}
+.marquee-track b{color:var(--teal);}
+@keyframes marquee{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+
+/* ============ SECTION SHELL ============ */
+section{padding:110px 8vw;position:relative;}
+.wrap{max-width:1180px;margin:0 auto;}
+.section-top{
+  display:flex;flex-direction:column;margin-bottom:60px;
+}
+.sec-no{
+  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal-dim);
+  letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.sec-no .loc{color:var(--muted-soft);}
+.sec-title{
+  font-size:clamp(2rem,4.5vw,3.1rem);font-weight:700;line-height:1.1;
+  letter-spacing:-0.01em;color:var(--white);
+}
+.sec-title em{font-style:normal;color:var(--teal);}
+.sec-sub{
+  max-width:620px;color:var(--text-body);font-size:1.02rem;margin-top:18px;line-height:1.7;
+}
+
+/* ============ ABOUT ============ */
+#about{background:var(--bg-soft);border-top:1px solid var(--border);}
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:start;}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+.about-body p{color:var(--text-body);margin-bottom:20px;font-size:1.02rem;line-height:1.8;}
+.about-body p.muted{color:var(--muted);}
+.about-quote{
+  margin-top:34px;padding:24px 28px;border-left:3px solid var(--teal);
+  background:var(--panel);border-radius:0 12px 12px 0;
+  font-size:1.15rem;font-style:italic;color:#DCE7EF;line-height:1.65;
+}
+.about-cols{display:flex;flex-direction:column;gap:22px;}
+.about-col{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:26px;}
+.about-col h4{
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal-dim);
+  letter-spacing:2px;margin-bottom:16px;
+}
+.about-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.about-col li{
+  color:var(--text-body);font-size:0.95rem;display:flex;align-items:center;gap:10px;
+}
+.about-col li::before{content:"";width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;}
+
+/* ============ EDUCATION ============ */
+.education{background:var(--bg);}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:860px){.edu-grid{grid-template-columns:1fr;}}
+.edu-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:34px;
+  transition:border-color .25s,transform .25s;
+}
+.edu-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
+.edu-card .badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--teal);
+  padding:5px 12px;border:1px solid rgba(47,217,196,0.3);border-radius:20px;margin-bottom:20px;
+}
+.edu-card .badge.cert{border-color:var(--border-strong);color:var(--muted);}
+.edu-card h3{font-size:1.45rem;color:var(--white);margin-bottom:6px;}
+.edu-card .org{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--teal-dim);margin-bottom:6px;}
+.edu-card .sub{color:var(--muted);font-size:0.9rem;margin-bottom:18px;}
+.edu-card .desc{color:var(--text-body);font-size:0.97rem;line-height:1.75;margin-bottom:22px;}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{
+  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);
+  background:var(--bg-soft);border:1px solid var(--border);padding:6px 12px;border-radius:20px;
+}
+
+/* ============ SKILLS ============ */
+#skills{background:var(--bg-soft);border-top:1px solid var(--border);}
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+@media(max-width:900px){.skill-grid{grid-template-columns:1fr;}}
+.skill-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px;}
+.skill-card .sc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.skill-card .sc-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;color:var(--white);}
+.skill-card .sc-count{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal-dim);}
+.skill-list{list-style:none;display:flex;flex-direction:column;}
+.skill-list li{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 0;border-bottom:1px solid var(--border);
+  font-size:0.92rem;color:var(--text-body);transition:color .2s,padding-left .2s;
+}
+.skill-list li:last-child{border-bottom:none;}
+.skill-list li:hover{color:var(--teal);padding-left:6px;}
+.skill-list li .ln{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted-soft);}
+
+/* ============ SERVICES ============ */
+#services{background:var(--bg);}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:980px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.service-grid{grid-template-columns:1fr;}}
+.service-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:26px;
+  transition:border-color .25s,background .25s,transform .25s;
+}
+.service-card:hover{border-color:rgba(47,217,196,0.5);background:rgba(47,217,196,0.04);transform:translateY(-4px);}
+.service-card .idx{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--teal);margin-bottom:16px;letter-spacing:1px;}
+.service-card h4{font-size:1.05rem;color:var(--white);margin-bottom:12px;}
+.service-card p{font-size:0.9rem;color:var(--muted);line-height:1.7;}
+
+/* ============ WORKFLOW ============ */
+#workflow{background:var(--bg-soft);border-top:1px solid var(--border);}
+.flow-ribbon{
+  display:flex;align-items:stretch;gap:0;flex-wrap:wrap;
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px 22px;
+}
+.flow-step{
+  flex:1;min-width:140px;text-align:center;padding:18px 12px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.flow-step .fn{font-family:'JetBrains Mono',monospace;font-size:1.5rem;color:var(--teal-dim);font-weight:600;}
+.flow-step h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;color:var(--white);letter-spacing:1px;}
+.flow-step p{font-size:0.78rem;color:var(--muted);max-width:160px;line-height:1.6;margin-top:6px;}
+.flow-step.deliver .fn{color:var(--teal);}
+.flow-arrow{display:flex;align-items:center;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:1.4rem;padding:0 6px;}
+@media(max-width:760px){
+  .flow-ribbon{flex-direction:column;align-items:center;gap:10px;}
+  .flow-arrow{transform:rotate(90deg);}
+}
+.flow-caption{
+  margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--muted);
+}
+.flow-caption b{color:var(--teal);}
+
+/* ============ PROJECTS ============ */
+#projects{background:var(--bg);}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
+@media(max-width:760px){.projects{grid-template-columns:1fr;}}
+.project-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  display:flex;flex-direction:column;transition:border-color .25s,transform .25s;
+}
+.project-card.featured{grid-column:1/-1;}
+.project-card:hover{border-color:rgba(47,217,196,0.55);transform:translateY(-6px);}
+.project-visual{
+  position:relative;min-height:200px;border-bottom:1px solid var(--border);
+  background:
+    linear-gradient(rgba(47,217,196,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(47,217,196,0.04) 1px,transparent 1px),
+    var(--bg-soft);
+  background-size:30px 30px,30px 30px;
+  display:flex;align-items:center;justify-content:center;padding:28px;
+}
+.project-visual .pv-label{
+  position:absolute;top:16px;left:20px;
+  font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--teal-dim);letter-spacing:1.5px;
+}
+.visual-flow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;}
+.visual-flow span{
+  min-width:92px;text-align:center;padding:14px 8px;
+  border:1px solid rgba(47,217,196,0.45);border-radius:9px;
+  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.78rem;color:var(--white);
+  background:rgba(47,217,196,0.06);
+}
+.visual-flow span.ready{border-color:var(--teal);color:var(--teal);background:rgba(47,217,196,0.12);}
+.visual-flow i{font-style:normal;color:var(--teal);font-size:1.1rem;}
+.chart-bars{height:104px;display:flex;align-items:flex-end;gap:16px;}
+.chart-bars span{width:36px;border-radius:6px 6px 0 0;background:linear-gradient(to top,rgba(47,217,196,0.15),var(--teal));box-shadow:0 0 22px rgba(47,217,196,0.1);}
+.chart-bars span:nth-child(1){height:38%;}
+.chart-bars span:nth-child(2){height:60%;}
+.chart-bars span:nth-child(3){height:48%;}
+.chart-bars span:nth-child(4){height:84%;}
+.chart-bars span:nth-child(5){height:100%;}
+.sql-code{
+  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1.15rem;line-height:1.45;
+  color:#D9E4EB;background:rgba(0,0,0,0.28);padding:18px 24px;border-radius:10px;
+  border:1px solid rgba(47,217,196,0.15);text-align:left;align-self:flex-end;margin-left:auto;
+}
+.sql-code i{color:var(--teal);font-style:normal;}
+.browser-bar{
+  position:absolute;top:20px;left:20px;right:20px;height:32px;
+  border:1px solid var(--border);border-bottom:0;border-radius:8px 8px 0 0;
+  padding:10px;display:flex;gap:6px;
+}
+.browser-bar i{width:7px;height:7px;border-radius:50%;background:var(--muted-soft);}
+.browser-content{
+  width:100%;max-width:280px;height:118px;margin-top:32px;
+  border:1px solid var(--border);border-radius:0 0 8px 8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:rgba(47,217,196,0.07);
+}
+.browser-content span{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:var(--teal);}
+.browser-content b{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:2px;color:var(--muted);}
+.project-content{padding:28px;}
+.project-head .ph-tag{font-family:'JetBrains Mono',monospace;font-size:0.66rem;color:var(--teal);letter-spacing:1.5px;display:block;margin-bottom:10px;}
+.project-head h3{font-size:1.35rem;line-height:1.25;color:var(--white);}
+.project-content p{font-size:0.91rem;color:var(--muted);line-height:1.75;margin-top:14px;}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.project-tags span{
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal);
+  background:rgba(47,217,196,0.07);border:1px solid rgba(47,217,196,0.22);padding:5px 11px;border-radius:20px;
+}
+.project-footer{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-top:22px;padding-top:20px;border-top:1px solid var(--border);
+  font-size:0.8rem;color:var(--muted-soft);
+}
+.project-link{
+  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal);
+  border:1px solid rgba(47,217,196,0.4);padding:8px 13px;border-radius:7px;
+  transition:background .2s,color .2s;
+}
+.project-link:hover{background:var(--teal);color:var(--bg);}
+
+/* ============ WHY ============ */
+#why{background:var(--bg-soft);border-top:1px solid var(--border);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr;}}
+.why-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px;
+  transition:transform .25s,border-color .25s;
+}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(47,217,196,0.45);}
+.why-card .w-icon{font-family:'JetBrains Mono',monospace;color:var(--teal);font-size:1.1rem;margin-bottom:16px;}
+.why-card h4{font-size:1.1rem;color:var(--white);margin-bottom:10px;}
+.why-card p{font-size:0.92rem;color:var(--muted);line-height:1.7;}
+
+/* ============ CONTACT ============ */
+#contact{
+  background:var(--bg);padding-top:140px;padding-bottom:80px;
+}
+#contact::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 75% 25%, rgba(47,217,196,0.07), transparent 45%);
+  pointer-events:none;
+}
+.contact-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;}
+.contact-top{margin-bottom:56px;}
+.contact-top .msg{
+  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--teal);
+  letter-spacing:2px;margin-bottom:22px;display:flex;align-items:center;gap:10px;
+}
+.contact-top .msg::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+.contact-top h2{font-size:clamp(2.6rem,6vw,4.2rem);font-weight:700;line-height:1.05;color:var(--white);letter-spacing:-0.02em;}
+.contact-top h2 em{font-style:normal;color:var(--teal);}
+.contact-top .desc{max-width:540px;color:var(--text-body);font-size:1.05rem;line-height:1.75;margin-top:24px;}
+.contact-cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px;
+}
+@media(max-width:640px){.contact-grid{grid-template-columns:1fr;}}
+.contact-link{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px 22px;
+  transition:border-color .2s,transform .2s;
+}
+.contact-link:hover{border-color:rgba(47,217,196,0.5);transform:translateY(-3px);}
+.contact-link .cl-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted-soft);letter-spacing:1px;margin-bottom:6px;}
+.contact-link .cl-value{font-size:0.95rem;color:var(--white);word-break:break-all;}
+.contact-link .cl-arrow{color:var(--teal);font-size:1.1rem;opacity:0;transition:opacity .2s,transform .2s;}
+.contact-link:hover .cl-arrow{opacity:1;transform:translateX(3px);}
+
+footer{
+  border-top:1px solid var(--border);padding:40px 8vw;text-align:center;
+}
+.footer-inner{max-width:1180px;margin:0 auto;}
+.footer-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:var(--white);}
+.footer-name .role{color:var(--muted);font-weight:400;font-family:'Inter',sans-serif;font-size:0.85rem;}
+.footer-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:18px 0;}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);transition:color .2s;}
+.footer-links a:hover{color:var(--teal);}
+.footer-note{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted-soft);}
+.footer-note i{color:var(--teal);font-style:normal;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  section{padding:80px 6vw;}
+  .hero-top{flex-direction:column;align-items:flex-start;gap:12px;}
+  .hp-ahead{flex-direction:column;gap:10px;}
+  .hp-arrow{transform:rotate(90deg);padding:4px 0;}
+}
+@media(max-width:600px){
+  #hero{padding:110px 6vw 50px;}
+  .hero-focus{flex-direction:column;align-items:flex-start;gap:30px;}
+}
+
+/* ============ PRINT ============ */
+@media print{
+  body{background:#fff;color:#111;}
+  nav,.marquee,.scroll-cue,.avail-chip{display:none !important;}
+  section{padding:40px 6vw;background:#fff !important;border:none !important;}
+  .sec-title,.edu-card h3,.project-head h3,.why-card h4,.contact-top h2{color:#111 !important;}
+  .edu-card,.skill-card,.service-card,.why-card,.project-card,.contact-link{background:#fff !important;border:1px solid #ddd !important;}
+  .edu-card .desc,.about-body p,.contact-top .desc,.service-card p,.project-content p,.why-card p{color:#333 !important;}
+  .pill,.project-tags span{color:#333 !important;border-color:#ccc !important;}
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#hero">&lt; FADY <b>/</b> &gt;</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#why">Why</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Let's talk ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <a href="mailto:fadysameh4455@gmail.com">fadysameh4455@gmail.com</a>
+      <a href="https://linkedin.com/in/fady-sameh22" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/24fady" target="_blank" rel="noopener">GitHub ↗</a>
+      <span>CAIRO / EGYPT</span>
+    </div>
+
+    <div class="hero-role">Junior Data Engineer</div>
+    <h1>FADY SAMEH<br><em>HAKIM</em></h1>
+    <p class="hero-usp">I help businesses turn messy data into clean, reliable data they can trust for better decisions.</p>
+
+    <div class="hero-btns">
+      <a class="btn btn-solid" href="#projects">View my work ↗</a>
+      <a class="btn btn-outline" href="#contact">Let's talk ↗</a>
+    </div>
+
+    <div class="hero-focus">
+      <div class="focus-block">
+        <div class="fb-label">FOCUS / DATA ENGINEERING</div>
+        <div class="fb-tags">
+          <span>PYTHON</span><span>SQL</span><span>ETL</span>
+          <span>DATA CLEANING</span><span>DATA VALIDATION</span>
+        </div>
+      </div>
+      <div class="social-strip">
+        <a href="https://linkedin.com/in/fady-sameh22" target="_blank" rel="noopener">LINKEDIN ↗</a>
+        <a href="https://github.com/24fady" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a href="mailto:fadysameh4455@gmail.com">EMAIL ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-panel fade-up">
+      <div class="hp-label">DATA PIPELINE</div>
+      <div class="hp-ahead">
+        <div class="hp-step"><div class="n">01</div><div class="l">RAW DATA</div></div>
+        <span class="hp-arrow">→</span>
+        <div class="hp-step"><div class="n">02</div><div class="l">CLEAN</div></div>
+        <span class="hp-arrow">→</span>
+        <div class="hp-step"><div class="n">03</div><div class="l">TRANSFORM</div></div>
+        <span class="hp-arrow">→</span>
+        <div class="hp-step"><div class="n">04</div><div class="l">VALIDATE</div></div>
+        <span class="hp-arrow">→</span>
+        <div class="hp-step final"><div class="n">05</div><div class="l">ANALYSIS-READY</div></div>
+      </div>
+      <span class="avail-chip">AVAILABLE FOR OPPORTUNITIES</span>
+    </div>
+
+    <div class="scroll-cue">
+      <a href="#about">SCROLL · DOWN ↘</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Python ✦ SQL ✦ ETL ✦ Data Cleaning ✦ Data Transformation ✦ Data Validation ✦ Data Pipelines ✦ Relational Databases ✦ Data Processing ✦ Data Integration ✦</span>
+    <span>Python ✦ SQL ✦ ETL ✦ Data Cleaning ✦ Data Transformation ✦ Data Validation ✦ Data Pipelines ✦ Relational Databases ✦ Data Processing ✦ Data Integration ✦</span>
+  </div>
+</div>
+
+<!-- 01 ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">01 / ABOUT <span class="loc">— CAIRO, EGYPT</span></div>
+      <h2 class="sec-title">Data is my <em>main</em> language.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>I am a passionate Junior Data Engineer with a strong interest in transforming raw and unorganized data into clean, reliable, and valuable information. I have hands-on experience with Python, SQL, data cleaning, data transformation, ETL concepts, and data processing.</p>
+        <p>Through my training and projects, I have developed a solid understanding of how data moves through different stages — from raw data collection and preparation to validation and analysis-ready datasets. I enjoy solving data-related challenges and building structured solutions that help businesses and teams work with their data more effectively.</p>
+        <p class="muted">I am continuously developing my technical skills and gaining practical experience through hands-on projects. My goal is to build efficient and reliable data solutions that turn complex and messy data into meaningful insights and support better decision-making.</p>
+        <div class="about-quote">"I help businesses turn messy data into clean, reliable data they can trust for better decisions."</div>
+      </div>
+      <div class="about-cols">
+        <div class="about-col">
+          <h4>FOCUS</h4>
+          <ul>
+            <li>Data Quality</li>
+            <li>Structured Workflows</li>
+            <li>Practical Solutions</li>
+          </ul>
+        </div>
+        <div class="about-col">
+          <h4>MINDSET</h4>
+          <ul>
+            <li>Problem Solving</li>
+            <li>Continuous Learning</li>
+            <li>Client-Focused</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 EDUCATION -->
+<section id="education" class="education">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">02 / EDUCATION &amp; TRAINING</div>
+      <h2 class="sec-title">Where I <em>learned</em> the craft.</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card fade-up">
+        <span class="badge">UNIVERSITY</span>
+        <h3>B.Sc. in Computer Science</h3>
+        <div class="org">Sphinx University</div>
+        <div class="sub">Faculty of Computers and Artificial Intelligence · Major: Cyber Security · Expected Graduation: 2028</div>
+        <p class="desc">Currently pursuing my degree in Computers and Artificial Intelligence, where I am developing a strong foundation in technology, problem-solving, and computing concepts.</p>
+      </div>
+      <div class="edu-card fade-up">
+        <span class="badge cert">TRAINING</span>
+        <h3>Microsoft Data Engineer Training</h3>
+        <div class="org">Digital Egypt Pioneers Initiative (DEPI)</div>
+        <div class="sub">Hands-on Data Engineering Track</div>
+        <p class="desc">Hands-on training focused on Data Engineering fundamentals and practical data-related skills.</p>
+        <div class="pill-row">
+          <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Data Cleaning</span>
+          <span class="pill">Data Transformation</span><span class="pill">ETL / ELT</span><span class="pill">Data Integration</span>
+          <span class="pill">Data Validation</span><span class="pill">Pipeline Concepts</span><span class="pill">Relational Databases</span>
+          <span class="pill">Data Processing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">03 / SKILLS <span class="loc">— TOOLS OF THE CRAFT</span></div>
+      <h2 class="sec-title">What I <em>work</em> with.</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card fade-up">
+        <div class="sc-head"><span class="sc-title">Data Engineering</span><span class="sc-count">01 / 04</span></div>
+        <ul class="skill-list">
+          <li>ETL / ELT Concepts <span class="ln">01</span></li>
+          <li>Data Pipelines <span class="ln">02</span></li>
+          <li>Data Integration <span class="ln">03</span></li>
+          <li>Batch Processing <span class="ln">04</span></li>
+          <li>Data Validation <span class="ln">05</span></li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="sc-head"><span class="sc-title">Python &amp; Data Processing</span><span class="sc-count">02 / 04</span></div>
+        <ul class="skill-list">
+          <li>Python <span class="ln">01</span></li>
+          <li>Pandas <span class="ln">02</span></li>
+          <li>NumPy <span class="ln">03</span></li>
+          <li>Matplotlib <span class="ln">04</span></li>
+          <li>Jupyter Notebook <span class="ln">05</span></li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="sc-head"><span class="sc-title">SQL &amp; Databases</span><span class="sc-count">03 / 04</span></div>
+        <ul class="skill-list">
+          <li>SQL <span class="ln">01</span></li>
+          <li>MySQL / Workbench <span class="ln">02</span></li>
+          <li>Joins &amp; Aggregation <span class="ln">03</span></li>
+          <li>Normalization <span class="ln">04</span></li>
+          <li>Relational Databases <span class="ln">05</span></li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="sc-head"><span class="sc-title">Data Analysis</span><span class="sc-count">04 / 04</span></div>
+        <ul class="skill-list">
+          <li>Data Cleaning <span class="ln">01</span></li>
+          <li>Data Preprocessing <span class="ln">02</span></li>
+          <li>Exploratory Data Analysis <span class="ln">03</span></li>
+          <li>Data Visualization <span class="ln">04</span></li>
+          <li>Dataset Preparation <span class="ln">05</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">04 / OFFERED SERVICES</div>
+      <h2 class="sec-title">What I can <em>do</em> for your data.</h2>
+      <p class="sec-sub">Practical services for teams that need cleaner, more usable data.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card fade-up">
+        <div class="idx">S1</div>
+        <h4>Data Cleaning &amp; Preprocessing</h4>
+        <p>I clean and prepare raw datasets by handling missing values, duplicates, inconsistent formats, and data quality issues to create reliable and analysis-ready data.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="idx">S2</div>
+        <h4>Data Transformation &amp; Integration</h4>
+        <p>I transform and organize data from different sources into structured formats that are easier to process, analyze, and maintain.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="idx">S3</div>
+        <h4>ETL / Data Pipeline Development</h4>
+        <p>I build basic ETL workflows that extract, transform, and load data efficiently while applying validation and quality checks throughout the process.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="idx">S4</div>
+        <h4>SQL &amp; Database Solutions</h4>
+        <p>I use SQL to query, manipulate, organize, and validate data within relational database environments.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="idx">S5</div>
+        <h4>Data Validation &amp; Quality Checks</h4>
+        <p>I apply validation techniques to identify inconsistencies, missing data, duplicates, and other quality issues before data is used for analysis or reporting.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="idx">S6</div>
+        <h4>Data Preparation</h4>
+        <p>I prepare structured, clean, and analysis-ready datasets for analytics and downstream processing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 WORKFLOW -->
+<section id="workflow">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">05 / THE WORKFLOW <span class="loc">— RAW DATA TO TRUSTED OUTPUT</span></div>
+      <h2 class="sec-title">A product is a chain of <em>craft.</em></h2>
+      <p class="sec-sub">A simple, repeatable path from raw data to trusted output.</p>
+    </div>
+    <div class="flow-ribbon fade-up">
+      <div class="flow-step">
+        <div class="fn">S1</div>
+        <h4>EXTRACT</h4>
+        <p>Collect and access raw data from available sources.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="fn">S2</div>
+        <h4>CLEAN</h4>
+        <p>Identify and handle missing values, duplicates, inconsistencies, and data quality issues.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="fn">S3</div>
+        <h4>TRANSFORM</h4>
+        <p>Convert and structure data into formats suitable for processing and analysis.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="fn">S4</div>
+        <h4>VALIDATE</h4>
+        <p>Apply quality checks to ensure the processed data is accurate, consistent, and reliable.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step deliver">
+        <div class="fn">S5</div>
+        <h4>DELIVER</h4>
+        <p>Produce clean, structured, and analysis-ready datasets.</p>
+      </div>
+    </div>
+    <div class="flow-caption fade-up">
+      <span>EXTRACT <b>→</b> CLEAN <b>→</b> TRANSFORM <b>→</b> VALIDATE <b>→</b> DELIVER</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">06 / SELECTED WORK</div>
+      <h2 class="sec-title">Projects I <em>built.</em></h2>
+      <p class="sec-sub">Hands-on projects that demonstrate my technical skills and practical approach to working with data.</p>
+    </div>
+    <div class="projects">
+
+      <article class="project-card featured fade-up">
+        <div class="project-visual">
+          <div class="pv-label">DATA PIPELINE</div>
+          <div class="visual-flow">
+            <span>RAW</span><i>→</i><span>CLEAN</span><i>→</i><span>TRANSFORM</span><i>→</i><span>VALIDATE</span><i>→</i><span class="ready">READY</span>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-head">
+            <span class="ph-tag">FEATURED PROJECT</span>
+            <h3>Data Cleaning &amp; Exploratory Data Analysis</h3>
+          </div>
+          <p>Worked with a raw dataset containing data-quality issues and transformed it into a clean, structured, and analysis-ready dataset. The project included inspection, cleaning, transformation, exploratory analysis, and visualization.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Jupyter</span>
+          </div>
+          <div class="project-footer">
+            <span>FOCUS / DATA QUALITY &amp; ANALYSIS</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card fade-up">
+        <div class="project-visual">
+          <div class="pv-label">PREDICTION MODEL</div>
+          <div class="chart-bars"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="project-content">
+          <div class="project-head">
+            <span class="ph-tag">PROJECT 02</span>
+            <h3>Car Price Prediction</h3>
+          </div>
+          <p>Built a complete data-preparation and machine-learning workflow for predicting vehicle prices. Prepared features, handled categorical data, and applied a Random Forest Regression model.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span>
+          </div>
+          <div class="project-footer">
+            <span>FOCUS / DATA PREPARATION</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card fade-up">
+        <div class="project-visual">
+          <div class="pv-label">SQL / DATABASE</div>
+          <div class="sql-code">SELECT<br><i>*</i><br>FROM data;<br><i>JOIN</i> tables;</div>
+        </div>
+        <div class="project-content">
+          <div class="project-head">
+            <span class="ph-tag">PROJECT 03</span>
+            <h3>SQL Database Management</h3>
+          </div>
+          <p>Applied relational database concepts and practical SQL queries for creating, organizing, retrieving, and manipulating structured data using tables, joins, filtering, aggregation, and normalization concepts.</p>
+          <div class="project-tags">
+            <span>SQL</span><span>MySQL</span><span>MySQL Workbench</span>
+          </div>
+          <div class="project-footer">
+            <span>FOCUS / STRUCTURED DATA</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card fade-up">
+        <div class="project-visual">
+          <div class="pv-label">WEB PLATFORM</div>
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <div class="browser-content">
+            <span>EDU</span><b>LEARN. BUILD. GROW.</b>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-head">
+            <span class="ph-tag">PROJECT 04</span>
+            <h3>EDU Programming Platform</h3>
+          </div>
+          <p>Developed a responsive educational programming platform with interactive features, live search, authentication, profile management, DOM manipulation, and structured JSON data.</p>
+          <div class="project-tags">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>JSON</span>
+          </div>
+          <div class="project-footer">
+            <span>FOCUS / INTERACTIVE PLATFORM</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 07 WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-top">
+      <div class="sec-no">07 / WHY WORK WITH ME</div>
+      <h2 class="sec-title">What I bring to a <em>project.</em></h2>
+      <p class="sec-sub">Honest positioning for this stage of my career.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="w-icon">◆</div>
+        <h4>Data-Focused Mindset</h4>
+        <p>I focus on understanding the data problem before building the solution.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="w-icon">◆</div>
+        <h4>Clean &amp; Reliable Data</h4>
+        <p>I prioritize data quality, consistency, and validation throughout the workflow.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="w-icon">◆</div>
+        <h4>Practical Approach</h4>
+        <p>I believe in learning by building and applying technical concepts to real-world projects.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="w-icon">◆</div>
+        <h4>Continuous Learning</h4>
+        <p>I continuously develop my Data Engineering skills through training, projects, and hands-on practice.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="w-icon">◆</div>
+        <h4>Business-Oriented Results</h4>
+        <p>My goal is not only to process data, but to turn messy information into structured data that supports better decisions.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="w-icon">◆</div>
+        <h4>Junior, But Serious</h4>
+        <p>Early in my career — but every project gets a structured approach, clean results, and honest communication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-top">
+      <div class="msg">HAVE DATA TO CLEAN?</div>
+      <h2>Let's build<br><em>together.</em></h2>
+      <p class="desc">I'm interested in practical Data Engineering opportunities where I can apply my technical skills, contribute to meaningful projects, learn from experienced professionals, and continue developing as a Data Engineering professional.</p>
+      <div class="contact-cta-row">
+        <a class="btn btn-solid" href="mailto:fadysameh4455@gmail.com">Start a project ↗</a>
+        <a class="btn btn-outline" href="https://linkedin.com/in/fady-sameh22" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-link" href="mailto:fadysameh4455@gmail.com">
+        <div><div class="cl-label">EMAIL</div><div class="cl-value">fadysameh4455@gmail.com</div></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/fady-sameh22" target="_blank" rel="noopener">
+        <div><div class="cl-label">LINKEDIN</div><div class="cl-value">/in/fady-sameh22</div></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://github.com/24fady" target="_blank" rel="noopener">
+        <div><div class="cl-label">GITHUB</div><div class="cl-value">/24fady</div></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="#hero">
+        <div><div class="cl-label">LOCATION</div><div class="cl-value">CAIRO · EGYPT</div></div>
+        <span class="cl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">FADY SAMEH HAKIM <span class="role">— Junior Data Engineer</span></div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/fady-sameh22" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/24fady" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="mailto:fadysameh4455@gmail.com">Email ↗</a>
+    </div>
+    <div class="footer-note">© 2026 FADY SAMEH HAKIM · Designed &amp; engineered with intention <i>·</i> CAIRO · EGYPT</div>
+  </div>
+</footer>
+
+<script>
+// Scroll fade-in animation
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+// Scroll spy - highlight active nav link
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = ['about','education','skills','services','workflow','projects','why','contact'];
+
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) spyObserver.observe(el);
+});
+
+// Project links - placeholder until real URLs are added
+document.querySelectorAll('.project-link').forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    alert('Project link can be added here once the GitHub repository or live project URL is connected.');
+  });
+});
+</script>
+</body>
+</html>
