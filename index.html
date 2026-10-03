@@ -215,7 +215,7 @@ section{padding:110px 8vw;position:relative;}
 
 /* ============ ABOUT ============ */
 #about{background:var(--bg-soft);border-top:1px solid var(--border);}
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:start;}
+.about-grid{display:grid;grid-template-columns:minmax(0,860px);gap:60px;align-items:start;}
 @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
 .about-body p{color:var(--text-body);margin-bottom:20px;font-size:1.02rem;line-height:1.8;}
 .about-body p.muted{color:var(--muted);}
@@ -224,17 +224,22 @@ section{padding:110px 8vw;position:relative;}
   background:var(--panel);border-radius:0 12px 12px 0;
   font-size:1.15rem;font-style:italic;color:#DCE7EF;line-height:1.65;
 }
-.about-cols{display:flex;flex-direction:column;gap:22px;}
-.about-col{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:26px;}
-.about-col h4{
-  font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal-dim);
-  letter-spacing:2px;margin-bottom:16px;
+.about-photo{display:none;}
+.hero-id{display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap;}
+.hero-avatar{
+  position:relative;flex-shrink:0;width:clamp(170px,25vw,320px);aspect-ratio:1/1;
+  border-radius:50%;padding:11px;
+  background:linear-gradient(140deg,var(--teal),rgba(47,217,196,0.15) 55%,var(--teal-dim));
+  box-shadow:0 26px 64px rgba(0,0,0,0.5),0 0 52px rgba(47,217,196,0.18);
 }
-.about-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
-.about-col li{
-  color:var(--text-body);font-size:0.95rem;display:flex;align-items:center;gap:10px;
+.hero-avatar::after{
+  content:"";position:absolute;inset:-17px;border-radius:50%;
+  border:1px dashed rgba(47,217,196,0.28);
 }
-.about-col li::before{content:"";width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;}
+.hero-avatar img{
+  width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 20%;
+  border:3px solid var(--bg);filter:contrast(1.04) saturate(1.05) brightness(1.04);
+}
 
 /* ============ EDUCATION ============ */
 .education{background:var(--bg);}
@@ -473,13 +478,14 @@ footer{
 
 /* ============ PRINT ============ */
 @media print{
-  body{background:#fff;color:#111;}
-  nav,.marquee,.scroll-cue,.avail-chip{display:none !important;}
-  section{padding:40px 6vw;background:#fff !important;border:none !important;}
-  .sec-title,.edu-card h3,.project-head h3,.why-card h4,.contact-top h2{color:#111 !important;}
-  .edu-card,.skill-card,.service-card,.why-card,.project-card,.contact-link{background:#fff !important;border:1px solid #ddd !important;}
-  .edu-card .desc,.about-body p,.contact-top .desc,.service-card p,.project-content p,.why-card p{color:#333 !important;}
-  .pill,.project-tags span{color:#333 !important;border-color:#ccc !important;}
+  html,body{background:#04070A !important;}
+  nav,.marquee,.scroll-cue,.avail-chip,.hero-btns,.social-strip{display:none !important;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  section{padding:60px 6vw;background:inherit !important;border:none !important;page-break-inside:avoid;}
+  #hero{min-height:auto;padding:80px 6vw;}
+  #contact{padding:90px 6vw;}
+  footer{page-break-inside:avoid;}
+  .fade-up{opacity:1 !important;transform:none !important;}
 }
 
 /* ============ ANIMATIONS ============ */
@@ -515,8 +521,15 @@ footer{
       <span>CAIRO / EGYPT</span>
     </div>
 
-    <div class="hero-role">Junior Data Engineer</div>
-    <h1>FADY SAMEH<br><em>HAKIM</em></h1>
+    <div class="hero-id">
+      <div>
+        <div class="hero-role">Junior Data Engineer</div>
+        <h1>FADY SAMEH<br><em>HAKIM</em></h1>
+      </div>
+      <div class="hero-avatar">
+        <img src="profile.png" alt="Fady Sameh Hakim - Junior Data Engineer" width="320" height="320">
+      </div>
+    </div>
     <p class="hero-usp">I help businesses turn messy data into clean, reliable data they can trust for better decisions.</p>
 
     <div class="hero-btns">
@@ -580,26 +593,7 @@ footer{
       <div class="about-body">
         <p>I am a passionate Junior Data Engineer with a strong interest in transforming raw and unorganized data into clean, reliable, and valuable information. I have hands-on experience with Python, SQL, data cleaning, data transformation, ETL concepts, and data processing.</p>
         <p>Through my training and projects, I have developed a solid understanding of how data moves through different stages — from raw data collection and preparation to validation and analysis-ready datasets. I enjoy solving data-related challenges and building structured solutions that help businesses and teams work with their data more effectively.</p>
-        <p class="muted">I am continuously developing my technical skills and gaining practical experience through hands-on projects. My goal is to build efficient and reliable data solutions that turn complex and messy data into meaningful insights and support better decision-making.</p>
-        <div class="about-quote">"I help businesses turn messy data into clean, reliable data they can trust for better decisions."</div>
-      </div>
-      <div class="about-cols">
-        <div class="about-col">
-          <h4>FOCUS</h4>
-          <ul>
-            <li>Data Quality</li>
-            <li>Structured Workflows</li>
-            <li>Practical Solutions</li>
-          </ul>
-        </div>
-        <div class="about-col">
-          <h4>MINDSET</h4>
-          <ul>
-            <li>Problem Solving</li>
-            <li>Continuous Learning</li>
-            <li>Client-Focused</li>
-          </ul>
-        </div>
+<p class="muted">I am continuously developing my technical skills and gaining practical experience through hands-on projects. My goal is to build efficient and reliable data solutions that turn complex and messy data into meaningful insights and support better decision-making.</p>
       </div>
     </div>
   </div>
